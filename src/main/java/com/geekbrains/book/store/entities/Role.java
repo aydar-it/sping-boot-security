@@ -1,6 +1,5 @@
 package com.geekbrains.book.store.entities;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,7 +1,6 @@
 package com.geekbrains.book.store.entities;
 
 import com.geekbrains.book.store.utils.Genre;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,5 +37,5 @@ public class Book {
     private Genre genre;
 
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
-    private Collection<OrderItem> books;
+    private Collection<OrderItem> items;
 }

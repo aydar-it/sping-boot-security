@@ -6,7 +6,6 @@ import com.geekbrains.book.store.services.BookService;
 import com.geekbrains.book.store.utils.BookFilter;
 import com.geekbrains.book.store.utils.Genre;
 import lombok.AllArgsConstructor;
-import org.dom4j.rule.Mode;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,6 +1,5 @@
 package com.geekbrains.book.store.entities;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,11 +18,11 @@ public class OrderItem {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "book_id")
     private Book book;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE)
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -34,5 +33,14 @@ public class OrderItem {
         this.book = book;
         this.total = total;
         this.price = book.getPrice();
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", total=" + total +
+                ", price=" + price +
+                '}';
     }
 }

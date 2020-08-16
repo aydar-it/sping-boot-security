@@ -1,20 +1,14 @@
 package com.geekbrains.book.store.services;
 
 import com.geekbrains.book.store.beans.Cart;
-import com.geekbrains.book.store.entities.Book;
 import com.geekbrains.book.store.entities.Order;
 import com.geekbrains.book.store.entities.OrderItem;
 import com.geekbrains.book.store.entities.User;
 import com.geekbrains.book.store.repositories.OrderItemRepository;
 import com.geekbrains.book.store.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -27,7 +21,7 @@ public class OrderService {
     public void addOrder(User user) {
         Order order = orderRepository.save(new Order(user));
         cart.getItems().forEach(e -> e.setOrder(order));
-        cart.getItems().forEach(e -> orderItemRepository.saveAll(cart.getItems()));
+        orderItemRepository.saveAll(cart.getItems());
         cart.clear();
     }
 

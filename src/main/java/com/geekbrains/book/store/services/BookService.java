@@ -5,13 +5,10 @@ import com.geekbrains.book.store.entities.Book;
 import com.geekbrains.book.store.exceptions.ResourceNotFoundException;
 import com.geekbrains.book.store.repositories.BookRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @AllArgsConstructor
