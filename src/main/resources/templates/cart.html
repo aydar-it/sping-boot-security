@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="app" ng-controller="booksController" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div th:replace="~{navigation :: navigation(Cart)}"/>
+
+    <form sec:authorize="isAuthenticated()" th:action="@{'/cart'}" method="get">
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
+
+    <table class="table table-hover" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>Название</td>
+            <td>Количество</td>
+            <td>Цена</td>
+        </tr>
+        <tbody>
+        <tr th:each="i : ${items}">
+            <td th:text="${i.book.title}"></td>
+            <td th:text="${i.total}"></td>
+            <td th:text="${i.price}"></td>
+            <td>
+            <form th:action="@{'/cart/' + ${i.book.id}}" method="get">
+                <button type="submit" class="btn btn-primary">Удалить позицию</button>
+            </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
